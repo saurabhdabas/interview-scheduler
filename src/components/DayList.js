@@ -31,11 +31,11 @@ import DayListItem from "components/DayListItem";
 //   )
 // }
 export default function DayList(props){
-
+  console.log("dayListProps:",props);
   const DayListItems = props.days.map((day)=>{
     return (
       <DayListItem 
-       key={day.id}
+        key={day.id}
         name={day.name} 
         spots={day.spots} 
         selected={day.name === props.day}
