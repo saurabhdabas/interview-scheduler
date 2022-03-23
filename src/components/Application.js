@@ -29,8 +29,8 @@ export default function Application(props) {
         <nav>
         <DayList onClick={(event)=>{setDay(event.target.value)}}
               days={days}
-              day={day}
-              setDay={setDay}
+              value={day}// day={day}
+              onChange={setDay}// setDay={setDay}
             />
       </nav>
       </section>
