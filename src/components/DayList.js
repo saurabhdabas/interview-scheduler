@@ -33,13 +33,14 @@ import DayListItem from "components/DayListItem";
 export default function DayList(props){
   console.log("dayListProps:",props);
   const DayListItems = props.days.map((day)=>{
+    console.log("DayFromDayListItem:",day)
     return (
       <DayListItem 
         key={day.id}
         name={day.name} 
         spots={day.spots} 
-        selected={day.name === props.day} //selected={day.name === props.day}
-        setDay={() => props.setDay(day.name)} //setDay={() => props.setDay(day.name)} 
+        selected={day.name === props.value} //selected={day.name === props.day}
+        setDay={() => props.onChange(day.name)} //setDay={() => props.setDay(day.name)} 
       />
     );
   })
