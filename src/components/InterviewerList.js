@@ -4,9 +4,9 @@ import "components/InterviewList.scss";
 
 
 export default function InterviewerList(props) {
-  // We have destructured the prop directly here, to avoid using props in every single line.
+
   const interviewersList = props.interviewers.map((interviewer)=>{
-    console.log("props.Interviewers:",props.interviewers);
+
     return (
     <InterviewerListItem
     key={interviewer.id} // Important to note: We need this to avoid a key prop error for child.
