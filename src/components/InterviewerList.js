@@ -1,18 +1,19 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import InterviewerListItem from "components/InterviewerListItem";
 import "components/InterviewList.scss";
 
 
-export default function InterviewerList(props) {
+function InterviewerList(props) {
 
   const interviewersList = props.interviewers.map((interviewer)=>{
 
     return (
     <InterviewerListItem
-    key={interviewer.id} // Important to note: We need this to avoid a key prop error for child.
+    key={interviewer.id}
     name={interviewer.name} 
     avatar={interviewer.avatar} 
-    selected={interviewer.id === props.selectedInterviewer}//selected={interviewer.id === interviewer}
+    selected={interviewer.id === props.selectedInterviewer}
     setInterviewer={()=> props.setInterviewer(interviewer.id)}
     />
     );
@@ -24,3 +25,7 @@ export default function InterviewerList(props) {
   </section>
   ); 
 }
+InterviewerList.propTypes = {
+ interviewers: PropTypes.array.isRequired
+}
+export default InterviewerList;
