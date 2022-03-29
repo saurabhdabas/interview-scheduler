@@ -1,11 +1,10 @@
-import React, { Fragment }  from "react";
-
-import "components/Appointment/styles.scss";
-import useVisualMode from "../../hooks/useVisualMode";
+import React from "react";
+import "components/Appointment/styles.scss"
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
 import Status from "components/Appointment/Status"
+import useVisualMode from "../../hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 import Confirm from "components/Appointment/Confirm";
 import Error from "components/Appointment/Error";
@@ -40,12 +39,12 @@ export default function Appointment(props) {
       .then(() => transition(EMPTY))
       .catch(error => transition(ERROR_DELETE, true));
   }
-
+  
   return (
   <article className="appointment">
-    <Header time={props.time? props.time : "No Appointments"}/>
+    <Header time={props.time}/>
     {mode === EMPTY && <Empty onAdd={() => transition("CREATE")} />}
-    {mode === SHOW && (
+    {mode === SHOW && props.interview &&(
     <Show
       student={props.interview.student}
       interviewer={props.interview.interviewer.name}
@@ -54,9 +53,7 @@ export default function Appointment(props) {
     />)}
     {mode === CREATE && (
       <Form
-        name={props.student}
-        interviewers={props.interviewers}
-        interviewer={props.interviewer}
+        interviewers ={props.interviewers}
         onCancel={back}
         onSave={save}
       />
@@ -76,9 +73,9 @@ export default function Appointment(props) {
     )}
     {mode === EDIT && (
       <Form
-        name={props.student}
+        name={props.interview.student}
         interviewers={props.interviewers}
-        interviewer={props.interviewer}
+        interviewer={props.interview.interviewer["id"]}
         onCancel={back}
         onSave={save}
       />
