@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React from "react";
+
 import DayList from "components/DayList";
 import Appointment from "components/Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay} from "../helpers/selectors";
@@ -14,7 +14,7 @@ export default function Application() {
   } = useApplicationData();
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state, state.day);
-  const appointmentList = dailyAppointments.map((appointment)=>{
+  const appointments=dailyAppointments.map((appointment)=>{
     const interview = getInterview(state, appointment.interview);
     return (
       <Appointment
@@ -27,6 +27,7 @@ export default function Application() {
       cancelInterview={cancelInterview}
       />
     );
+
   });
   return (
     <main className="layout">
@@ -37,13 +38,13 @@ export default function Application() {
         <DayList 
           onClick={(event)=>{setDay(event.target.value)}}
           days={state.days}
-          value={state.day}// day={day}
-          onChange={setDay}// setDay={setDay}
+          value={state.day}
+          onChange={setDay}
         />
       </nav>
       </section>
       <section className="schedule">
-        <ul>{appointmentList}</ul>
+        {appointments}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
