@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
-  
+
   //Sets empty default state
   const [state, setState] = useState({
     day: "Monday",
@@ -12,6 +12,19 @@ export default function useApplicationData() {
   });
   const setDay = day => setState({ ...state, day });
   //Add interviews from the database using axios.put
+
+  function findSpotsRemaining(state, id, num) {
+		const day = state.days.find((day) => day.appointments.includes(id));
+		const newDay = { ...day, spots: day.spots + num };
+		const newDaysArr = state.days.map((day) => {
+			if (day.id === newDay.id) {
+				return newDay;
+			} else {
+				return day;
+			}
+		});
+		return newDaysArr;
+	}
 
   function bookInterview(id, interview) {
     console.log("interview:",interview)
@@ -23,8 +36,11 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+    const days = findSpotsRemaining(state, id, state.appointments[id].interview ? 0 : -1);
     return axios.put(`/api/appointments/${id}`, appointment).then(() => {
-      setState({ ...state, appointments});
+      console.log("state:",state);
+      
+      setState({ ...state, appointments, days});
     })
   }
 
@@ -39,10 +55,12 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
+    const days = findSpotsRemaining(state, id, state.appointments[id].interview ? 1 : 0);
     return axios.delete(`/api/appointments/${id}`, appointment).then(() => {
-      setState({ ...state, appointments});
+      setState({ ...state, appointments, days });
     });
   }
+
   useEffect(()=>{
     Promise.all([
       axios.get('http://localhost:8001/api/days'),
