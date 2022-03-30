@@ -13,12 +13,12 @@ To Cancel or Edit the interview ,a user can click on respective buttons .
 ## Setup
 
 Install dependencies with `npm install`.
-1.axios
-2.classname
-3.normalize.css
-4.react
-5.react-dom
-6.react-scripts
+- axios
+- classname
+- normalize.css
+- react
+- react-dom
+- react-scripts
 
 ## Running Webpack Development Server
 
