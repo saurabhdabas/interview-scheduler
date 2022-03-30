@@ -5,11 +5,11 @@ To Book an interview ,a user must type a name and select an interviewer from the
 To Cancel or Edit the interview ,a user can click on respective buttons .
 
 ## Screenshots
-!["Login Page for the TinyApp"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/login_page.png?raw=true)
+!["Before Booking an interview"](https://github.com/saurabhdabas/interview-scheduler/blob/master/docs/BookAnInterview.png?raw=true)
 
-!["Home Page when not logged In"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/urls_page.png?raw=true)
+!["After Booking an Interview"](https://github.com/saurabhdabas/interview-scheduler/blob/master/docs/AfterBooking.png?raw=true)
 
-!["Home Page when user has added to his database"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/urls_pagewithData.png?raw=true)
+!["When Deleteing an Interview"](https://github.com/saurabhdabas/interview-scheduler/blob/master/docs/DeletingInterview.png?raw=true)
 ## Setup
 
 Install dependencies with `npm install`.
