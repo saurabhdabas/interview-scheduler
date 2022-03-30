@@ -4,9 +4,12 @@ To intitiate the process of booking an interview, a user has to click an empty s
 To Book an interview ,a user must type a name and select an interviewer from the available list of interviewers , Once done can save the interview.
 To Cancel or Edit the interview ,a user can click on respective buttons .
 
-## Video 
-<video src='your URL here' width=180/>
+## Screenshots
+!["Login Page for the TinyApp"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/login_page.png?raw=true)
 
+!["Home Page when not logged In"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/urls_page.png?raw=true)
+
+!["Home Page when user has added to his database"](https://github.com/saurabhdabas/tinyapp/blob/master/docs/urls_pagewithData.png?raw=true)
 ## Setup
 
 Install dependencies with `npm install`.
