@@ -11,7 +11,7 @@ export default function useApplicationData() {
     interviewers: {}
   });
   const setDay = day => setState({ ...state, day });
-  //Add interviews from the database using axios.put
+  
 
   function findSpotsRemaining(state, id, num) {
 		const day = state.days.find((day) => day.appointments.includes(id));
@@ -25,7 +25,7 @@ export default function useApplicationData() {
 		});
 		return newDaysArr;
 	}
-
+  //Add interviews from the database using axios.put and updates the number of available spots
   function bookInterview(id, interview) {
     console.log("interview:",interview)
     const appointment = {
@@ -44,7 +44,7 @@ export default function useApplicationData() {
     })
   }
 
-  //Deletes interviews from the database using axios.delete
+  //Deletes interviews from the database using axios.delete and updates the remaining spots
 
   function cancelInterview(id) {
     const appointment = {
